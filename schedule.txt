@@ -1,0 +1,12 @@
+2018.05.06
+1. Sort list (Problem 148)
+The solution is in linked_list/linked_list.cpp which also contains code about how to get the pointer to the middle element in a list and how to merge two sorted lists.
+
+2. Quick sort
+The solution is in vector/quick_sort.cpp. Quick sort mainly contains two steps: divide an array into two seperate parts and conqure. No leetcode problem was found yet.
+
+3. Binary Search (Problem 35)
+The solution is in vector/vec.cpp where an iterative implimentation of binary search is provided.
+
+4. Binary Tree Inorder Traversal (Problem 94)
+The solution is in tree/traversal.cpp.
