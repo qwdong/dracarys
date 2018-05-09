@@ -1,4 +1,11 @@
 #include <iostream>
+#include "common.h"
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int val_){ val = val_; left = right = NULL;}
+};
 
 // 94. Binary Tree Inorder Traversal
 vector<int> inorderTraversal(TreeNode* root) {
