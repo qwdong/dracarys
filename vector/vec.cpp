@@ -50,27 +50,52 @@ void quick_sort(vector<int> &vec, int start, int end) {
     }
 }
 
+vector<int> twoSum(vector<int>& nums, int target) {
+    unordered_map<int, int> map;
+    vector<int> res; res.reserve(2);
+    for(int i = 0; i < nums.size(); i++) {
+        if(map.find(nums[i]) == map.end()) {
+            map[target-nums[i]] = i;
+        } else {
+            res[0] = map[nums[i]];
+            res[1] = i;
+            return res;
+        }
+    }
+    //return res;
+}
+
 int main (int argc, char** argv)
 {
 
-    vector<int> vec;
-    int N = 100;
-    for(int i = 0; i < N; i++)
-        vec.push_back(rand()%1000);
+//    vector<int> vec;
+//    int N = 100;
+//    for(int i = 0; i < N; i++)
+//        vec.push_back(rand()%1000);
 
 
-    for(int i = 0; i < N; i++)
-        std::cout << vec[i] << " ";
+//    for(int i = 0; i < N; i++)
+//        std::cout << vec[i] << " ";
+
+//    std::cout << std::endl;
+
+
+//    quick_sort(vec, 0, vec.size()-1);
+
+
+//    for(int i = 0; i < N; i++)
+//        std::cout << vec[i] << " ";
+
+//    std::cout << std::endl;
+
+    vector<int> vec({2,7,11,15});
+
+    auto res = twoSum(vec, 9);
+
+    for(int i = 0; i < 2; i++)
+        std::cout << res[i] << " ";
 
     std::cout << std::endl;
 
-
-    quick_sort(vec, 0, vec.size()-1);
-
-
-    for(int i = 0; i < N; i++)
-        std::cout << vec[i] << " ";
-
-    std::cout << std::endl;
     return (0);
 }
