@@ -9,3 +9,5 @@ add_subdirectory(tree)
 add_subdirectory(dp)
 add_subdirectory(common)
 add_subdirectory(graph)
+add_subdirectory(containers)
+
