@@ -3,6 +3,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 # define INF 0x3f3f3f3f
+
+// https://www.geeksforgeeks.org/greedy-algorithms-set-6-dijkstras-shortest-path-algorithm/
 class Graph{
     int V;
     list<pair<int, int> > *adj_;
@@ -12,6 +14,7 @@ public:
 
     void addEdge(int u, int v, int w);
     void shortestPathUsingSet(int s);
+    void searchSS(int s);
 };
 
 Graph::Graph(int v) {
@@ -62,6 +65,35 @@ void Graph::shortestPathUsingSet(int src) {
 
 }
 
+void Graph::searchSS(int s) {
+
+    set<pair<int, int> > dist_and_v;
+    dist_and_v.insert(make_pair(0, s));
+    vector<int> dist(V, std::numeric_limits<int>::max());
+    while(!dist_and_v.empty()) {
+
+        auto tmp = (*dist_and_v.begin());
+        dist_and_v.erase(dist_and_v.begin());
+
+        list<pair<int, int> >::iterator iter;
+
+        for( iter = adj_[tmp.second].begin(); iter != adj_[tmp.second].end(); iter++) {
+            if(dist[iter->first] > iter->second +tmp.first) {
+                if(dist[iter->first] != std::numeric_limits<int>::max()) {
+                    dist_and_v.erase(dist_and_v.find(make_pair(dist[iter->first], iter->first)));
+                }
+                dist[iter->first] = tmp.first + iter->second;
+                dist_and_v.insert(make_pair(dist[iter->first], iter->first));
+            }
+        }
+    }
+    // Print shortest distances stored in dist[]
+       printf("Vertex   Distance from Source\n");
+       for (int i = 0; i < V; ++i)
+           printf("%d \t\t %d\n", i, dist[i]);
+
+}
+
 int main (int argc, char** argv)
 {
     // create the graph given in above fugure
@@ -84,6 +116,7 @@ int main (int argc, char** argv)
         g.addEdge(6, 8, 6);
         g.addEdge(7, 8, 7);
 
+        g.searchSS(0);
         g.shortestPathUsingSet(0);
     return (0);
 }
