@@ -24,17 +24,20 @@ int minPathSum(vector<vector<int>   >& grid) {
 
 }
 
+
+int divide(int dividend, int divisor) {
+
+    if(dividend == std::numeric_limits<int>::min() && divisor == -1)return std::numeric_limits<int>::max();
+    int result = dividend/divisor;
+    return result;
+}
+
 int main (int argc, char** argv)
 {
+    std::cout << divide(10, 3) << std::endl;
+    std::cout << (10/3) << std::endl;
+    int a = 10, b = 3;
 
-
-    vector<vector<int> > grid;
-
-    vector<int> v1({1, 2}), v2({1, 1});
-
-    grid.push_back(v1);
-    grid.push_back(v2);
-
-    cout << minPathSum(grid) << endl;
+    cout << a/b << std::endl;
     return (0);
 }
